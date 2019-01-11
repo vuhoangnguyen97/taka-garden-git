@@ -1,0 +1,264 @@
+*{
+	margin:0;
+	padding:0;
+}
+
+#main {
+    max-width: 1000px;
+    margin: 0 auto; /* canh giữa */
+}
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+/*---------------CSS TOP-------------*/
+#top{
+	width:100%;
+	max-height:60px;
+	margin:0 auto;
+	position: fixed;
+    top: 0;
+    z-index:100;
+	background-color: rgba(0,0,0,0.7);
+}
+.userCommand{
+	float:right;
+	padding: 0 100px 0 0;
+	line-height: 60px;
+	color:#FFFFFF;
+	clear:right;
+}
+
+.search{
+	float:left;
+	padding: 0 0 0 150px;
+}
+    .txtSearch {
+    border: 1px solid rgb(173, 204, 204);
+    width: 300px;
+	height: 30px;
+	max-height:50px;
+    transition: 500ms all ease;
+	float:left;
+	margin-bottom:1px;
+	}
+	.txtSearch:hover,
+	.txtSearch:focus {
+    transition: 500ms all ease;
+    background:#FFFFFF url(../imgs/Application-icon.png) no-repeat right;
+    background-size: 25px 25px;
+    background-position: 96% 62%;
+	}
+	.search select{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+   height: 25px;
+   overflow: hidden;
+   background: url(../imgs/arrow_select.jpg) no-repeat right #ddd;
+   border: 1px solid #ccc;
+	}
+	.search .blueButton{
+	margin:0;
+	float:left;
+	height: 32px;	
+	width:60px;
+	}	
+	
+/*---------------CSS HEADER-------------*/
+#header{
+	max-width:990px;
+	min-width:990px;
+	margin:80px auto;
+	background-color:#BC2528;
+}
+/*---------------CSS ComandContainer-------------*/
+
+#navigation{
+	float:left;
+	background-color:#FFFFFF;
+	max-height:50px;
+	min-height:50px;
+	margin:0 5px 5px 5px;
+
+	/*max-height:inherit;*/
+}
+	#navigation ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		height: 50px;
+	}
+	#navigation li {
+		float: left;
+		line-height: 50px;
+	}
+/*---------------CSS LIST MENNU-------------*/
+
+.list{
+/*	background-color: rgba(0,0,0,0.7); */
+	width:175px;
+	position: fixed;
+
+    left: 0;
+	margin-top: 40px;
+    z-index:99;
+	text-align:center;
+}
+.tl{
+	background-color:#000000;
+	line-height:24px;
+	color:#FFFFFF;
+	font-size:17px;
+	padding:5px 0;	
+}
+/*---------------CSS BODY-------------*/
+#body{
+	clear:both;
+	/*
+	max-height:1000px;
+	min-height:1000px;
+	*/
+}
+.main_body{
+	background:rgba(255,255,255,0.8);
+	clear:both;
+	min-height:500px;	
+	width:100%;
+	float:left;
+	margin:auto;
+	padding: 20px;
+}
+
+.info_address{
+	height:40px;
+	margin: 20px 5px;
+}
+.hrm{
+	float:left; width: 550px; clear:left; color:#A2BBEF; margin-left:5px;
+}
+
+.listPages strong{
+	color:#000000;
+	font-size:20px;
+}
+
+.listPages{
+	clear:left;
+	padding-top:20px;
+	text-align:center;
+}
+.listPages hr{
+	width: 500px; 
+	color:#A2BBEF;
+	margin: 5px auto;
+}
+
+.searchpage{
+	display:inline;
+	width:100%;
+	}
+/*---------------CSS FOOTER-------------*/
+
+#footer
+{
+	clear:left;	
+}
+
+
+/* --------------------------TEXBOX---------------*/
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  display: inline-block;
+  height: 20px;
+  padding: 4px 6px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #555555;
+  vertical-align: middle;
+  -webkit-border-radius: 4px;
+     -moz-border-radius: 4px;
+          border-radius: 4px;
+}
+
+input,
+textarea,
+.uneditable-input {
+  width: 206px;
+}
+
+textarea {
+  height: auto;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="date"],
+input[type="month"],
+input[type="time"],
+input[type="week"],
+input[type="number"],
+input[type="email"],
+input[type="url"],
+input[type="tel"],
+input[type="color"],
+.uneditable-input {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+     -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+       -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+          transition: border linear 0.2s, box-shadow linear 0.2s;
+}
+
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus {
+  border-color: rgba(82, 168, 236, 0.8);
+  outline: 0;
+  outline: thin dotted \9;
+}
+
+td.title{
+	font-size:20px;
+	font-style:italic;
+	font-weight:bold;
+}
+/*-------end textBOX----*/

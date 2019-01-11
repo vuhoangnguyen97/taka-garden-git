@@ -1,0 +1,91 @@
+/* CSS Document */
+
+.product
+{
+	width:238px;
+	height:340px;
+	margin:5px;
+	float:left;
+	
+	border-style:dashed;
+	border-width:thin;
+	border-color:#A2BBEF;
+}
+
+.prod_img{
+	height:220px;
+}
+.prod_info{
+	height:80px;
+	text-align:center;
+}
+.prod_cmd_before {
+	height:40px;
+	display:none;
+	float:left;
+}
+.prod_cmd_after{
+	height:40px;
+	float:left;
+	display:block;
+}
+.img_p{
+	display: block;
+    margin: auto;
+	padding-top:15px;
+}
+
+.proname{
+	color:#592AF8;
+	font-weight:bold;
+}
+
+.price{
+	text-align:right;
+	font-weight:bold;
+	color:#1AE524;
+}
+/*--------------TRang Detail----------*/
+	.thumbs {
+/*		border-style: dashed;
+		border-color: #999;
+		border-width: 1px;
+*/		padding: 2px;
+		margin: 5px;
+		cursor: pointer;
+	}
+.hrd
+{
+	border-style:dashed;
+	color:#4F59D0;
+	margin: 10px 0 10px 0;;	
+}
+.TinyDes_proid span
+{
+	font-size:large;
+}
+.image_proid{
+	float:left;
+	width:50%;
+	}
+.TinyDes_proid{
+	float:left;
+	width:50%;
+	}
+.FullDes_proid{
+	float:left;
+	clear:left;
+	width:100%;
+	}
+.spCungLoai, .spCungNsx{
+	margin: 10px auto;
+	float:left;
+	clear:left;
+	text-align:center;
+
+}
+.spCungLoai .product, .spCungNsx .product{
+	height:200px;
+	width:150px;
+	float:left;
+}

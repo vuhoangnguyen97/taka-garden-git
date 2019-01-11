@@ -1,0 +1,130 @@
+/* CSS Document */
+.blueButton {
+	border:none;
+	-moz-box-shadow: 0px 10px 14px -7px #3e7327;
+	-webkit-box-shadow: 0px 10px 14px -7px #3e7327;
+	box-shadow: 0px 10px 14px -7px #3e7327;
+	background-color:#77b55a;
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	border:1px solid #4b8f29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:arial;
+	font-size:13px;
+	font-weight:bold;
+	padding:6px 12px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #5b8a3c;
+}
+.blueButton:hover {
+	background-color:#72b352;
+}
+.blueButton:active {
+	position:relative;
+	top:3px;
+}
+
+
+<!-----------------------NAV---------------->
+.nav{}
+
+A.nav, A:visited.nav, A:active.nav, A:link.nav {
+    display: block;
+    color:#000000;
+	font-size:16px;
+    text-decoration: none;
+    padding: 0 25px 0 25px;
+}
+
+A:hover.nav {
+	background-color: rgba(0,0,0,0.7);
+	color:#FFFFFF;
+}
+<!----------------------LIST Menu---------------->
+.lismenu{}
+
+A.listmenu, A:active.listmenu,  A:link.listmenu A:visited.listmenu{
+
+    display: block;
+    color:#000000;
+	line-height:40px;
+    text-decoration: none;
+	text-transform:uppercase;
+}
+
+A:hover.listmenu {
+	background-color: rgba(0,0,0,0.7);
+	color:#FFFFFF;
+	font-size:18px;
+}
+<!----------------------button ----------------
+.lbutton{}
+
+A.lbutton, A:visited.lbutton, A:link.lbutton {
+/*	-moz-box-shadow: 0px 10px 14px -7px #3e7327;
+	-webkit-box-shadow: 0px 10px 14px -7px #3e7327;
+	box-shadow: 0px 10px 14px -7px #3e7327;
+	
+*/
+    display: block;
+	float:left;
+	background-color:#77b55a;
+    text-decoration: none;
+	color:#ffffff;
+	text-align:center;
+	line-height:35px;
+	width: 111px;
+	margin:0 3px 0 3px;
+	border:1px solid #4b8f29;
+	font-family:arial;
+	font-size:13px;
+	font-weight:bold;
+}
+
+A:hover.lbutton {
+	background-color:#72b352;
+	font-size:15px;
+} 
+ A:active.lbutton {
+	position:relative;
+	bottom:3px;
+}
+<!----------------------User command---------------->
+.ucmd{}
+
+A.ucmd, A:visited.ucmd, A:active.ucmd, A:link.ucmd {
+    display: block;
+    color:#FFFFFF;
+    text-decoration: none;
+	float:left;
+	text-align:center;
+	font-size:20px;
+	padding:0 20px 0 20px;
+}
+
+A:hover.ucmd {
+	background-color: rgba(0,0,0,0.7);
+	color:#FFFFFF;
+	font-size:18px;
+}
+<!----------------------list pages product---------------->
+.lpage{
+}
+
+A.lpage, A:visited.lpage, A:link.lpage  A:active.lpage{
+    display: block;
+    color:#1347ED;
+    text-decoration: none;
+	font-size:20px;
+	line-height:25px;
+	padding:0 5px 0 5px;
+	display:inline;
+}
+
+A:hover.lpage {
+	color:#C46263;
+	font-size:25px;
+}
