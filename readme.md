@@ -11,3 +11,5 @@
 - Phần admin:
 + thêm,xóa,sửa: Sản phẩm, tin tức, Khách hàng, kh yêu thích, nhân viên (người dùng), thông tin trang tỉnh
 - Làm trên local (xampp) và úp lên web free như somee.com
+
+** Framework UI: Webix Javascript Framework Pro
