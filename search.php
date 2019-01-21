@@ -189,6 +189,7 @@ if(isset($_POST["btnSearch"]))
 			function putProID(masp) {
 				$("#txtMaSP").val(masp);
 				document.form1.submit();
+                alert('Mua thành công!');
 			}
 		</script>
 	</body>

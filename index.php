@@ -206,7 +206,7 @@ if (isset($_POST["btnSearch"])) {
                                     <h4 class="text-center"><?php echo $item->proName; ?> </h4>
                                     <h5 class="text-center"><?php echo number_format($item->getPrice()); ?> VNĐ</h5>
                                     <h4 class="text-center line-through"><?php echo number_format($item->salesprice); ?>VNĐ</h4>
-                                    <h4 id="btnBuy" class="text-center"><a href="#"  onClick="putProID('<?php echo $item->proId; ?>')"
+                                    <h4 id="btnBuy" class="text-center"><a id="btnMua" href="#"  onClick="putProID('<?php echo $item->proId; ?>')"
                                                class="lbutton">Mua ngay</a></h4>
                                 </div>
                             </div>
@@ -234,7 +234,7 @@ if (isset($_POST["btnSearch"])) {
                     <div class="prod-content">
                         <div class="row">
                             <?php
-                            for ($i = 0; $i < 4; $i++) {
+                            for ($i = 0; $i < sizeof($listProduct1); $i++) {
                                 ?>
                                 <div class="col-md-3 col-sm-3 col-xs-6">
                                     <div class="prod-item">
@@ -273,7 +273,7 @@ if (isset($_POST["btnSearch"])) {
                     <div class="prod-content">
                         <div class="row">
                             <?php
-                            for ($i = 0; $i < 4; $i++) {
+                            for ($i = 0; $i < sizeof($listProduct2); $i++) {
                                 ?>
                                 <div class="col-md-3 col-sm-3 col-xs-6">
                                     <div class="prod-item">
@@ -311,7 +311,7 @@ if (isset($_POST["btnSearch"])) {
                     <div class="prod-content">
                         <div class="row">
                             <?php
-                            for ($i = 0; $i < 4; $i++) {
+                            for ($i = 0; $i < sizeof($listProduct3); $i++) {
                                 ?>
                                 <div class="col-md-3 col-sm-3 col-xs-6">
                                     <div class="prod-item">
@@ -327,7 +327,7 @@ if (isset($_POST["btnSearch"])) {
                                             <span class="price"><?php echo number_format($listProduct3[$i]->getPrice()); ?>
                                                 VNĐ</span>
                                         </div>
-                                        <a href="#" onClick="putProID('<?php echo $listProduct3[$i]->proId; ?>')"
+                                        <a href="#"  onClick="putProID('<?php echo $listProduct3[$i]->proId; ?>')"
                                                class="lbutton">Đặt hàng</a>
                                     </div>
                                 </div>
@@ -340,6 +340,27 @@ if (isset($_POST["btnSearch"])) {
     </div>
 </div>
 <!-- /Content -->
+
+<!-- Popup mua thành công -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <?php include 'footer.php'; ?>
 
@@ -356,6 +377,7 @@ if (isset($_POST["btnSearch"])) {
     function putProID(masp) {
         $("#txtMaSP").val(masp);
         document.form1.submit();
+        //alert('Mua thành công!');
     }
 
 </script>

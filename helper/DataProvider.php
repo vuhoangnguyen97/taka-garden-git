@@ -16,6 +16,11 @@ define("DB", "quanlytaka");
 define("UID", "root");
 define("PWD", "");
 
+//define("SERVER", "112.213.89.144");
+//define("DB", "mrthothl_edu_vn_taka");
+//define("UID", "mrtho_taka");
+//define("PWD", "GauNho2019");
+
 class DataProvider
 {
 

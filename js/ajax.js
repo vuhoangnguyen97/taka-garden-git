@@ -112,6 +112,25 @@ function paypalPayment(total){
     });
 }
 
+function toUSD(vnd){
+    let usd = 0;
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:81/taka_garden/js/tygia.xml",
+        dataType: "xml",
+        success: function(xml) {
+            console.log(xml.getElementsByTagName("Exrate")[18].getAttribute('Sell'));
+            var currentExchange = xml.getElementsByTagName("Exrate")[18].getAttribute('Sell');
+            usd = vnd/currentExchange;
+        },
+        error: function (error) {
+            alert('error');
+        }
+    });
+
+    return usd;
+}
+
 function loadTime(){
     var id = 1;
     var url = '';

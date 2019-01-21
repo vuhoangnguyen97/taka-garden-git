@@ -3,8 +3,10 @@
     require_once './mail/PHPMailer.php';
     require_once './mail/SMTP.php';
     require_once './mail/Exception.php';
+    require_once __DIR__ . '/vendor/autoload.php'; // pdf lib
+
     /* GỬI EMAIL */
-    // B1 : Config Cấu hình email : GMail 
+    //  Config Cấu hình email : GMail
     $mail = new PHPMailer\PHPMailer\PHPMailer();
     $mail -> CharSet = "UTF-8";
 
@@ -28,6 +30,7 @@
 
     if (isset($_POST['hoTen']) && isset($_POST['detail']) && isset($_POST['total'])) {
         // vãng lai
+
         $content = '<h4>Chào bạn: '.$_POST['hoTen'].'</h4>';
 
         $chiTiet = $_POST['detail'];

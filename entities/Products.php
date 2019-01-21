@@ -136,6 +136,42 @@ Class Products
         return $result;
     }
 
+    /*-- data thống kê  --*/
+    public static function loadData($id){
+        /*  Simple query
+         *   SELECT count(orders.orderId) as sum, orders.orderDate from orderdetails details, orders orders
+             WHERE details.ProId = 2
+             and details.orderID = orders.orderId
+             GROUP by orders.orderDate
+         * */
+        $sql = "SELECT count(orders.orderId) as sum, orders.orderDate from orderdetails details, orders orders
+            WHERE details.ProId = $id
+            and details.orderID = orders.orderId
+            GROUP by orders.orderDate";
+        $data = new DataProvider();
+        $list = $data::execQuery($sql);
+
+        while ($row = mysqli_fetch_assoc($list)) {
+            $proId = $row["sum"];
+            $proName = $row["orderDate"];
+            $tinyDes = '';
+            $fullDes = '';
+            $price = '';
+            $quantity = '';
+            $view = '';
+            $dayAdd = '';
+            $catId = '';
+            $classify = '';
+
+            $p = new Products($proId, $proName, $tinyDes, $fullDes, $price, $quantity, $catId, $view, $dayAdd, $classify);
+            array_push($ret, $p);
+        }
+
+        return $ret;
+
+    }
+
+
     /*------------Load ALL-------*/
     public static function loadProductsAll()
     {
@@ -163,6 +199,61 @@ Class Products
         }
 
         return $ret;
+    }
+
+    public static function loadAllProductWebix(){
+        $ret = array();
+
+        $sql = "select * from products";
+        $list = DataProvider::execQuery($sql);
+
+        while ($row = mysqli_fetch_array($list)) {
+            $proId = $row["ProID"];
+            $proName = $row["ProName"];
+            $tinyDes = $row["TinyDes"];
+            $fullDes = $row["FullDes"];
+            $price = $row["Price"];
+            $quantity = $row["Quantity"];
+            $view = $row["NView"];
+            $dayAdd = $row["DayAdd"];
+            $catId = $row["CatID"];
+            $classify = $row["Classify"];
+            $onsale = $row["onsale"];
+            $salesprice = $row["salesprice"];
+
+            $p = new Products($proId, $proName, $tinyDes, $fullDes, $price, $quantity, $catId, $view, $dayAdd, $classify, $onsale, $salesprice);
+            array_push($ret, $p);
+        }
+
+        return json_encode($ret);
+    }
+
+    /*-- List data on sale -- */
+    public static function listOnSale(){
+        $ret = array();
+        $sql = "select * from products p where p.onsale = 1";
+
+        $list = DataProvider::execQuery($query);
+        while ($row = mysqli_fetch_array($list)) {
+            $proId = $row["ProID"];
+            $proName = $row["ProName"];
+            $tinyDes = $row["TinyDes"];
+            $fullDes = $row["FullDes"];
+            $price = $row["Price"];
+            $quantity = $row["Quantity"];
+            $view = $row["NView"];
+            $dayAdd = $row["DayAdd"];
+            $catId = $row["CatID"];
+            $classify = $row["Classify"];
+            $onsale = $row["onsale"];
+            $salesprice = $row["salesprice"];
+
+            $p = new Products($proId, $proName, $tinyDes, $fullDes, $price, $quantity, $catId, $view, $dayAdd, $classify, $onsale, $salesprice);
+            array_push($ret, $p);
+        }
+
+        return $ret;
+
     }
 
     /*--- Load data for chart ---*/

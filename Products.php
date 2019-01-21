@@ -136,6 +136,42 @@ Class Products
         return $result;
     }
 
+    /*-- data thống kê  --*/
+    public static function loadData($id){
+        /*  Simple query
+         *   SELECT count(orders.orderId) as sum, orders.orderDate from orderdetails details, orders orders
+             WHERE details.ProId = 2
+             and details.orderID = orders.orderId
+             GROUP by orders.orderDate
+         * */
+        $sql = "SELECT count(orders.orderId) as sum, orders.orderDate from orderdetails details, orders orders
+            WHERE details.ProId = $id
+            and details.orderID = orders.orderId
+            GROUP by orders.orderDate";
+        $data = new DataProvider();
+        $list = $data::execQuery($sql);
+
+        while ($row = mysqli_fetch_assoc($list)) {
+            $proId = $row["sum"];
+            $proName = $row["orderDate"];
+            $tinyDes = '';
+            $fullDes = '';
+            $price = '';
+            $quantity = '';
+            $view = '';
+            $dayAdd = '';
+            $catId = '';
+            $classify = '';
+
+            $p = new Products($proId, $proName, $tinyDes, $fullDes, $price, $quantity, $catId, $view, $dayAdd, $classify);
+            array_push($ret, $p);
+        }
+
+        return $ret;
+
+    }
+
+
     /*------------Load ALL-------*/
     public static function loadProductsAll()
     {
@@ -196,7 +232,7 @@ Class Products
 
 
     /* -----------------------load product theo NHA SAN XUAT--------------*/
-    public static function loadProductsByCatId($p_catId)
+    public static function loadId($p_catId)
     {
         $ret = array();
 

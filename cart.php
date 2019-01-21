@@ -272,8 +272,8 @@ $listProduct2 = Products::loadProductsByCatId(3);
                                     </div>
 <!--                                    <div class="col-md-12 order-note">-->
                                         <div class="col-md-4"><input id="txtHoTen" class="tk-width-100" type="text" required="true" name="txtHoTen" placeholder="Họ tên:"/></div>
-                                        <div class="col-md-4"><input type="number" class="tk-width-100" required="true" name="txtSoDienThoai" placeholder="Số điện thoại:"/></div>
-                                        <div class="col-md-4"><input type="email" class="tk-width-100" required="true" name="txtEmail" placeholder="Email:"/></div>
+                                        <div class="col-md-4"><input id="txtSDT" type="number" class="tk-width-100" required="true" name="txtSoDienThoai" placeholder="Số điện thoại:"/></div>
+                                        <div class="col-md-4"><input id="txtEmail" type="email" class="tk-width-100" required="true" name="txtEmail" placeholder="Email:"/></div>
 <!--                                    </div>-->
                                 </div>
                                 <?php } ?>
@@ -295,40 +295,77 @@ $listProduct2 = Products::loadProductsByCatId(3);
 
 
                                     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-                                    <script>
-                                        paypal.Button.render({
-                                            env: 'sandbox',
+                                    <script type="text/javascript">
+                                        let usd = 0;
+                                        function toUSD(vnd){
+                                            $.ajax({
+                                                type: "GET",
+                                                url: "http://localhost:81/taka_garden/js/tygia.xml",
+                                                dataType: "xml",
+                                                success: function(xml) {
+                                                    var currentExchange = xml.getElementsByTagName("Exrate")[18].getAttribute('Sell');
+                                                    usd = vnd/currentExchange;
+                                                    saveUSD(usd);
+                                                    console.log(usd);
+                                                },
+                                                error: function (error) {
+                                                    alert('error');
+                                                }
+                                            });
+                                        }
+                                        function saveUSD(usd){
+                                            $.ajax({
+                                                type: "POST",
+                                                url: "http://localhost:81/taka_garden/tygia.php",
+                                                data: {usd: usd},
+                                                dataType: "html",
+                                                success: function(xml) {
+                                                    console.log('success');
+                                                },
+                                                error: function (error) {
+                                                    alert('error');
+                                                }
+                                            });
+                                        }
+                                        let total = toUSD(<?php echo $total ?>);
+                                        console.log('ttt'+total);
+                                        setTimeout(renderPayPal
+                                            , 3000);
 
-                                            commit: true,
+                                        function renderPayPal() {
+                                            paypal.Button.render({
+                                                env: 'sandbox',
 
-                                            client: {
-                                                sandbox: '<?php echo 'Ae_i1xv2kO9mqWHjvXApWiomrXpAg6d9E5Nr2qxH7sucRcgQIIZITSFMFB2mkO9pUTYr6Mvg4q04TgWp'; ?>',
-                                                //production: '<?php //echo 'Ae_i1xv2kO9mqWHjvXApWiomrXpAg6d9E5Nr2qxH7sucRcgQIIZITSFMFB2mkO9pUTYr6Mvg4q04TgWp'; ?>//'
-                                            },
+                                                commit: true,
 
-                                            payment: function (data, actions) {
+                                                client: {
+                                                    sandbox: '<?php echo 'Ae_i1xv2kO9mqWHjvXApWiomrXpAg6d9E5Nr2qxH7sucRcgQIIZITSFMFB2mkO9pUTYr6Mvg4q04TgWp'; ?>',
+                                                    //production: '<?php //echo 'Ae_i1xv2kO9mqWHjvXApWiomrXpAg6d9E5Nr2qxH7sucRcgQIIZITSFMFB2mkO9pUTYr6Mvg4q04TgWp'; ?>//'
+                                                },
 
-                                                return actions.payment.create({
-                                                    payment: {
-                                                        transactions: [
-                                                            {
-                                                                amount: {
-                                                                    total: '<?php echo $total ?>',
-                                                                    currency: '<?php echo 'USD'; ?>'
+                                                payment: function (data, actions) {
+
+                                                    return actions.payment.create({
+                                                        payment: {
+                                                            transactions: [
+                                                                {
+                                                                    amount: {
+                                                                        total: <?php echo ($_SESSION['usdTotal'] != '')? $_SESSION['usdTotal'] : 0;?>,
+                                                                        currency: '<?php echo 'USD'; ?>'
+                                                                    }
                                                                 }
-                                                            }
-                                                        ]
-                                                    }
-                                                });
-                                            },
+                                                            ]
+                                                        }
+                                                    });
+                                                },
 
-                                            onAuthorize: function (data, actions) {
-
-                                                return actions.payment.execute().then(function () {
-                                                    alert("Mua thành công!");
-                                                });
-                                            }
-                                        }, '#paypal-button');
+                                                onAuthorize: function (data, actions) {
+                                                    return actions.payment.execute().then(function () {
+                                                        $('#btnLapHD').trigger('click');
+                                                    });
+                                                }
+                                            }, '#paypal-button');
+                                        }
                                     </script>
                                 <?php } ?>
                             </div>
@@ -437,6 +474,8 @@ $listProduct2 = Products::loadProductsByCatId(3);
                     alert("error");
                 }
             }
+
+
         </script>
         <!-- InstanceEndEditable -->
 	</body>

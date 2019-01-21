@@ -5,7 +5,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-//require $_SERVER['DOCUMENT_ROOT']  . '/taka_garden/helper/DataProvider.php';
+require $_SERVER['DOCUMENT_ROOT']  . '/taka_garden/helper/DataProvider.php';
 
 Class Products
 {
@@ -143,6 +143,72 @@ Class Products
     public function setCatId($catId)
     {
         $this->catId = $catId;
+    }
+
+
+
+    public static function loadAllProductWebix(){
+        $ret = array();
+
+        $sql = "select * from products";
+        $list = DataProvider::execQuery($sql);
+
+        while ($row = mysqli_fetch_array($list)) {
+            $proId = $row["ProID"];
+            $proName = $row["ProName"];
+            $tinyDes = $row["TinyDes"];
+            $fullDes = $row["FullDes"];
+            $price = $row["Price"];
+            $quantity = $row["Quantity"];
+            $view = $row["NView"];
+            $dayAdd = $row["DayAdd"];
+            $catId = $row["CatID"];
+            $classify = $row["Classify"];
+            $onsale = $row["onsale"];
+            $salesprice = $row["salesprice"];
+
+            $p = new Products($proId, $proName, $tinyDes, $fullDes, $price, $quantity, $catId, $view, $dayAdd, $classify, $onsale, $salesprice);
+            array_push($ret, $p);
+        }
+
+        return json_encode($ret);
+    }
+
+    /*-- data thống kê  --*/
+    public static function loadData($id){
+       /*  Simple query
+        *   SELECT count(orders.orderId) as sum, orders.orderDate from orderdetails details, orders orders
+            WHERE details.ProId = 2
+            and details.orderID = orders.orderId
+            GROUP by orders.orderDate
+        * */
+        $sql = "SELECT count(orders.orderId) as sum, orders.orderDate from orderdetails details, orders orders
+            WHERE details.ProId = $id
+            and details.orderID = orders.orderId
+            GROUP by orders.orderDate";
+        $data = new DataProvider();
+        $list = $data::execQuery($sql);
+
+        $ret = array();
+
+        while ($row = mysqli_fetch_assoc($list)) {
+            $proId = $row["sum"];
+            $proName = "a";
+            $tinyDes = "a";
+            $fullDes = "a";
+            $price = 0;
+            $quantity = 0;
+            $view = 0;
+            $dayAdd = $row["orderDate"];
+            $catId = 0;
+            $classify = "a";
+
+            $p = new Products($proId, $proName, $tinyDes, $fullDes, $price, $quantity, $catId, $view, $dayAdd, $classify);
+            array_push($ret, $p);
+        }
+
+        return $ret;
+
     }
 
     /*------------Load ALL-------*/

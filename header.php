@@ -93,7 +93,7 @@
                         </a>
                     </li>
                     <li class="submenu">
-                        <a href="#" id="idMenu">
+                        <a href="search.php?nsx=0&value=&gia=100000000" id="idMenu">
                             <span class="nav-caption">Sản phẩm</span>
                         </a>
                         <ul class="sub_menu">

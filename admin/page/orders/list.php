@@ -33,15 +33,15 @@ $list = Order::loadAll();
                     <tbody>
                     <?php if (isset($list)) { ?>
                         <?php foreach($list as $item) { ?>
-                            <tr>
+                            <tr >
                                 <td><?php echo $item->orderID; ?></td>
                                 <td><?php echo $item->userID ?></td>
                                 <td> <?php echo number_format($item->total); ?></td>
                                 <td><?php echo $item->orderDate; ?></td>
                                 <!--<td><?php echo $item->note; ?></td>-->
-                                <td> <?php 
+                                <td> <?php
                                 if( $item->status == 0 ){
-                                    echo '<span style="color: yellowgreen">Pending</span>';
+                                    echo '<span style="color: darkorange; font-weight: bold">Pending</span>';
                                 }
                                 else if( $item->status == 1 ){
                                     echo '<span style="color: springgreen">Completed</span>';

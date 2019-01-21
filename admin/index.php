@@ -51,6 +51,8 @@ $type = isset($_GET['type']) ? $_GET['type'] : '';
     <link rel="stylesheet" href="assets/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
     <!-- Date picker-->
 
+
+
     <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap-combined.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen"
           href="http://tarruda.github.com/bootstrap-datetimepicker/assets/css/bootstrap-datetimepicker.min.css">
@@ -178,6 +180,20 @@ $type = isset($_GET['type']) ? $_GET['type'] : '';
                         </li>
                     </ul>
                 </li>
+                <!-- Products có webix -->
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-files-o"></i>
+                        <span>Products using Webix</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu">
+                        <li><a href="/taka_garden/admin?act=orderwebix&type=list"><i class="fa fa-circle-o"></i> Danh sách</a></li>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </section>
         <!-- /.sidebar -->
@@ -236,6 +252,16 @@ $type = isset($_GET['type']) ? $_GET['type'] : '';
                     break;
                 default:
                     include "page/users/list.php";
+                    break;
+            }
+            break;
+        case 'orderwebix':
+            switch ($type) {
+                case 'list':
+                    include "page/order-webix/list.php";
+                    break;
+                default:
+                    include "page/order-webix/list.php";
                     break;
             }
             break;
@@ -314,6 +340,7 @@ $type = isset($_GET['type']) ? $_GET['type'] : '';
         format: 'dd/MM/yyyy hh:mm:ss',
     });
 </script>
+
 </body>
 </html>
 <?php }?>

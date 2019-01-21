@@ -91,10 +91,7 @@
                 var data = '';
                 data = <?php echo json_encode($listProductChart, JSON_UNESCAPED_UNICODE ); ?> ;
                 console.log(data[5])
-                // for (var i = 0; i < data.length; i++) {
-                //     var counter = data[i];
-                //     console.log(counter.proName);
-                // }
+
                 Morris.Bar({
                     element: 'chart',
                     data: [
